@@ -1,0 +1,815 @@
+<!-- Copyright Cyril Auboin 2016 Tous drois réservés -->
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<title>Orange Coffee v3.0</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name='theme-color' content='#FF6600'>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="./css/w3.css">
+<link rel="stylesheet" href="./css/cyr.css">
+
+<link rel="stylesheet" type="text/css" href="./css/stdtheme.css">
+<link rel="stylesheet" href="./css/font-awesome.min.css">
+<script src="./jquery/jquery-1.12.3.min.js"></script>
+<script src="./js/cyril.js"></script>
+
+<style>
+.topnav {z-index:2 !important}
+.w3-third .w3-sidenav a:hover,.w3-sidenav.test a:hover {color:#000 !important;}
+.w3-third .w3-sidenav a.w3-green:hover {color:#fff!important;}
+.w3-third .w3-sidenav a.w3-pink:hover {color:#fff!important;}
+.w3-third .w3-sidenav a.test:hover {color:#fff!important;}
+.ifrtest,.ifrtestcoll {height:250px;width:100%;border:1px solid #ddd}
+@media screen and (max-width:584px){.ifrtest{height:300px !important}.ifrtestcoll{height:350px !important}}
+body,h1,h3,h4,h5,h6 {font-family: Handlee;}
+html{height:100%;}
+body{min-height:100%;}
+
+.bobthefish    { display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    -ms-flex-direction: column;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    }
+.bobthefish2 {
+
+    -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1; /* OLD - Firefox 19- */
+    -webkit-flex: 1; /* Chrome */
+    -ms-flex: 1; /* IE 10 */
+    flex: 1; /* NEW, */
+}
+
+</style>
+
+</head>
+<body id="lebody" class="bobthefish" onload="reconnect_auto();$(leftmenuinnerinner).css('overflow-y','hidden');$(belowtopnav).css('background','linear-gradient(to bottom right,#fff6f0, #ffb670)');">
+<div class='w3-center w3-theme top'>
+<a class='w3schools-logo' href=''><nobr>Orange Coffee</nobr></a>
+<div class='w3-right toptext w3-wide'>LE PLUS GRAND SITE DE COMMANDE DE CAFE</div></div>
+<div class='w3-navbar w3-theme w3-card-2 w3-slim topnav' style="height:44px;" id='topnav'>
+
+<div style='float:left;width:100%;overflow:hidden;height:44px'>
+<a href='javascript:void(0);' class='topnav-localicons w3-hide-large w3-left' onclick='open_menu()' title='Menu'><!--&#9776;-->Menu</a>
+<a href='/' onclick="window.location.href='/index.html';return false" class='topnav-icons fa fa-home w3-left' title="Accueil"></a>
+<a href='javascript:void(0);' class='w3-right' title='Connecté'><i id="label_menu_connecte" class="left"></i></a>
+<a href='javascript:void(0);' class='w3-hide-small' title='CSS Tutorial'></a>
+</div>
+<ddiv class='w3-hide-small' style='float:right;width:30%;overflow:hidden;height:44px;'>
+
+</difv>
+</didv>
+<dfiv id='nav_tutorials' class='w3-dropnav w3-light-grey w3-card-2 w3-center'></dfiv>
+<dfiv id='nav_references' class='w3-dropnav w3-light-grey w3-card-2 w3-center'></dfiv>
+<didv id='nav_examples' class='w3-dropnav w3-light-grey w3-card-2 w3-center'></ddiv>
+<didv id='nav_translate' class='w3-dropnav w3-light-grey w3-card-2 w3-center'></ddiv>
+<ddiv id='nav_search' class='w3-dropnav w3-light-grey w3-card-2 w3-center'></ddiv>
+</div>
+<div class='w3-row w3-light-grey bobthefish2' style='height:100%;position:relative;' id='belowtopnav'>
+<div class='w3-col w3-slim' id='leftmenu' style="overflow-y: hidden;">
+<div id='leftmenuinner'>
+<div class='w3-theme' id='leftmenuinnerinner' style="overflow-y: hidden;">
+<a href='javascript:void(0)' onclick='close_menu()' class='w3-closebtn w3-hide-large w3-large' style='padding:3px 12px;'>&times;</a>
+<h2 class="left">Menu</h2>
+<a target="_top" id="menu_accueil" href="index.html" onclick="window.location.href='/index.html';return false" class="active">Accueil</a>
+<a target="_top" style="cursor:pointer"  id="menu_login" onclick="afficherVue('login',window);return false;">Se connecter</a>
+
+<a target="_top" style="cursor:pointer"  id="menu_utilisateurs_soldes" onclick="afficherVue('utilisateurs_soldes',window);return false;">Utilisateurs et Soldes</a>
+<a target="_top" style="cursor:pointer" id="menu_boissons_tarifs" onclick="afficherVue('boissons_tarifs',window);return false;">Boissons et Tarifs</a>
+<a target="_top" style="cursor:pointer" id="menu_historique_commandes" onclick="afficherVue('historique_commandes',window);return false;">Historique des Commandes</a>
+
+<br>
+<div id="menu_connecte" style="display:none;"><h2 id="label_menu_connecte_2" class="left"></h2>
+<a target="_top" style="cursor:pointer" id="menu_commander" onclick="afficherVue('commander',window);return false;">Commander</a></div>
+
+</div>
+
+</div>&nbsp;</div>
+<div class='w3-rest' >
+<div class='w3-row '>
+<div class='w3-col l10 m12 w3-padding-tiny' id='main'>
+<div id='mainLeaderboard' style='overflow:hidden;display:none;'>
+<!-- MainLeaderboard-->
+<div id='div-gpt-ad-1422003450156-2'>
+</div></div>
+<div id="contenuerreur" >
+        <div id="modal_erreur" class="w3-modal" style="display:none;">
+            <div class="w3-modal-content w3-animate-bottom ">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_erreur').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Erreur!</h4>
+            </header>
+            <center><div class="w3-container" id="modal_erreur_message">
+
+            </div></center><br><br>
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+</div>
+<div id="contenumain" class="w3-container w3-padding-tiny w3-center w3-animate-opacity">
+
+
+<img src="./cafe_s.gif" class="w3-circle" width="50%" style="max-width:350px;">
+<h1>Bienvenue sur le site Orange Coffee v3.0!</h1>
+</div>
+<div id="contenulogin">
+</div>
+
+
+<div style="display:none;">
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
+a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
+</div>
+
+<br>
+<div classs="w3-row" clafss="w3-col l2 m12" style="display:none" id="right">
+<div id="div-gpt-ad-1422003450156-5" style="display:none">
+</div>
+
+</div>
+</div>
+<hr>
+
+<script src="./js/w3schools_footer.js"></script>
+
+<!-- div contenant toutes les vues de l'application -->
+<div id="cyr_templates" style="display:none;">
+    
+    <div id="cyr_template_boissons_tarifs">
+        <script>
+        function fonction_boissons_tarifs_onload()
+        {
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/boissons",
+                data: "",
+                dataType:"json",
+                success: function(data, textStatus, jqXHR){
+                        strtbl="";
+                        for (i=0;i<data.boissons.length;i++)
+                        {
+                            strtbl=strtbl+"<tr class='w3-hover-green'><td>"+data.boissons[i].boisson+"</td><td>"+data.boissons[i].prix+"</td></tr>";
+                        }
+                        $(table_boissons_tarifs).find("tbody").empty();
+                        $(table_boissons_tarifs).find("tbody").append(strtbl);
+                    },
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+        }
+        function fonction_boissons_tarifs_onunload()
+        {
+            $(table_boissons_tarifs).find("tbody").empty();
+        }
+        </script>
+        
+        <h3>Tarif des boissons</h3>
+        <table id="table_boissons_tarifs" class="w3-table-all">
+        <thead>
+        <tr class="w3-green">
+          <th>Boisson</th>
+          <th>Prix</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+    <br><br><br><br>
+    </div>
+    
+    <div id="cyr_template_utilisateurs_soldes">
+        <script>
+            
+        function fonction_utilisateurs_soldes_modal()
+        {
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/detailsoldes",
+                data: "",
+                dataType:"json",
+                success: function(datat){
+                    $(modal_utilisateurs_soldes).css('display','block');
+                    strtbl="";
+
+                    for (i=datat.detailsoldes.length-1;i>0;i--)
+                    {
+                        strdet="commande n°"+datat.detailsoldes[i].n_commande+"<br>";
+                        for (j=0;j<datat.detailsoldes[i].solde_det.length;j++)
+                        {
+                            tmp=datat.detailsoldes[i].solde_det[j];
+                            strdet=strdet+tmp.prenom+"="+tmp.solde+" ";
+                        }
+                        strtbl=strtbl+"<tr class='w3-hover-green'><td>"+strdet+"</td><td>"+datat.detailsoldes[i].crediteur.prenom+"="+datat.detailsoldes[i].crediteur.credit+"</td></tr>";
+                    }
+                    
+                    $(table_modal_utilisateurs_soldes).find("tbody").empty();
+                    $(table_modal_utilisateurs_soldes).find("tbody").append(strtbl);
+                    
+                    var modall = document.getElementById('modal_utilisateurs_soldes');
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    ;},
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+        } 
+
+        function fonction_utilisateurs_soldes_onload()
+        {
+            $(modal_utilisateurs_soldes).css('display','none');//bug chrome..
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/utilisateurs",
+                data: "",
+                dataType:"json",
+                success: function(data, textStatus, jqXHR){
+                    strtbl="";
+                    for (i=0;i<data.utilisateurs.length;i++)
+                    {
+                        vipp="Non";if (data.utilisateurs[i].mode_vip){vipp="Oui";}
+                        strtbl=strtbl+"<tr class='w3-hover-green'><td>"+data.utilisateurs[i].nom+"</td><td>"+data.utilisateurs[i].prenom+"</td><td>"+vipp+"</td><td>"+data.utilisateurs[i].solde+"</td></tr>";
+                    }
+                    $(table_utilisateurs_soldes).find("tbody").empty();
+                    $(table_utilisateurs_soldes).find("tbody").append(strtbl);                    
+                    },
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+        }
+        function fonction_utilisateurs_soldes_onunload()
+        {
+            $(table_utilisateurs_soldes).find("tbody").empty();
+        }
+        </script>
+        
+        <h3>Liste des utilisateurs et leurs soldes</h3>
+        <div id="modal_utilisateurs_soldes" class="w3-modal">
+            <div class="w3-modal-content w3-animate-bottom ">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_utilisateurs_soldes').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Détail du calcul des soldes</h4>
+            </header>
+            <div class="w3-container" id="modal_contenu_utilisateurs_soldes">
+                <h5>Coeff VIP: 0.4</h5>
+                <table id="table_modal_utilisateurs_soldes" class="w3-table-all">
+                    <thead>
+                        <tr class="w3-green">
+                            <th>commandes</th>
+                            <th>crédit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+        
+        <table id="table_utilisateurs_soldes" class="w3-table-all">
+        <thead>
+        <tr class="w3-green">
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>VIP</th>
+          <th>Solde</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+        <br>
+        <button onclick="fonction_utilisateurs_soldes_modal()">Afficher le détail du calcul des soldes</button>
+    
+    </div>
+    
+    <div id="cyr_template_historique_commandes">
+        <script>
+        function fonction_historique_commandes_modal(n_command)
+        {
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/commandedet/"+n_command,
+                data: "",
+                dataType:"json",
+                success: function(datat){
+                    $(modal_historique_commandes).css('display','block');
+                    strtbl="";
+                    var boissonsStats = {};
+                    for (i=0;i<datat.commandedet.length;i++)
+                    {
+                        if (boissonsStats[datat.commandedet[i].boisson]==null){boissonsStats[datat.commandedet[i].boisson]=1;}else{boissonsStats[datat.commandedet[i].boisson]++;}
+                        apaye=(datat.commandedet[i].id_payeur == datat.commandedet[i].id_user) ? "Oui" : "Non";
+                        strtbl=strtbl+"<tr class='w3-hover-green'><td>"+datat.commandedet[i].nom+"</td><td>"+datat.commandedet[i].prenom+"</td><td>"+datat.commandedet[i].boisson+"</td><td>"+apaye+"</td></tr>";
+                    }
+                    strtbl2="";
+                    boissonsStats["Total"]=datat.commandedet.length;
+                    for (var key in boissonsStats) {
+                        if (boissonsStats.hasOwnProperty(key)) {
+                            strtbl2=strtbl2+"<tr class='w3-hover-green'><td>"+key+"</td><td>"+boissonsStats[key]+"</td></tr>";
+                        }
+                    }
+                    $(modal_contenu_historique_commandes_num).html(datat.commandedet[0].n_commande);
+                    
+                    $(table_modal_historique_commandes_rappel).find("tbody").empty();
+                    $(table_modal_historique_commandes_rappel).find("tbody").append(strtbl2);
+                    
+                    $(table_modal_historique_commandes).find("tbody").empty();
+                    $(table_modal_historique_commandes).find("tbody").append(strtbl);
+                    
+                    var modall = document.getElementById('modal_historique_commandes');
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    ;},
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+        } 
+        
+        function fonction_historique_commandes_onload()
+        {
+            $(modal_historique_commandes).css('display','none');//bug chrome..
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/commandes",
+                data: "",
+                dataType:"json",
+                success: function(data, textStatus, jqXHR){
+                    strtbl="";
+                    for (i=data.commandes.length-1;i>=0;i--)
+                    {
+                        strtbl=strtbl+"<tr style='cursor:pointer' onclick='fonction_historique_commandes_modal("+data.commandes[i].n_commande+")' class='w3-hover-green'><td>"+data.commandes[i].n_commande+"</td><td>"+data.commandes[i].nom+"</td><td>"+data.commandes[i].prenom+"</td><td>"+data.commandes[i].nb+"</td><td>"+new Date(data.commandes[i].date).toLocaleString("fr-fr")+"</td></tr>";
+                    }
+                    $(table_historique_commandes).find("tbody").empty();
+                    $(table_historique_commandes).find("tbody").append(strtbl);                    
+                    },
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+        }
+        function fonction_historique_commandes_onunload()
+        {
+            $(table_historique_commandes).find("tbody").empty();
+        }
+        </script>
+        
+        <h3>Historique des Commandes</h3>
+        <div id="modal_historique_commandes" class="w3-modal">
+            <div class="w3-modal-content w3-animate-bottom ">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_historique_commandes').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Détail de la commande n°<span id="modal_contenu_historique_commandes_num"></span></h4>
+            </header>
+            <div class="w3-container" id="modal_contenu_historique_commandes_rappel">
+                <h6>Rappel</h6>
+                <table id="table_modal_historique_commandes_rappel" class="w3-table-all">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="w3-container" id="modal_contenu_historique_commandes">
+                <h6>Détail</h6>
+                <table id="table_modal_historique_commandes" class="w3-table-all">
+                    <thead>
+                        <tr class="w3-green">
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Boisson</th>
+                            <th>A payé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+        <table id="table_historique_commandes" class="w3-table-all">
+        <thead>
+        <tr class="w3-green">
+          <th>N°</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Nb</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+    
+    </div>
+    
+    <div id="cyr_template_commander">
+        <script>
+        
+        var commander_refresh_timer;
+            
+        function fonction_commander_modal()
+        {
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/boissons",
+                data: "",
+                dataType:"json",
+                success: function(datat){
+                    $(modal_commander).css('display','block');
+                    strtbl="<table border=0 style='width:100px'>";
+                    //<input id="user_souvenir_login" class="w3-check w3-margin-top" type="checkbox" checked="checked">
+                    for (i=0;i<datat.boissons.length;i++)
+                    {
+                         strtbl=strtbl+"<tr><td valign=bottom align=center><input name='radioboisson' value='"+datat.boissons[i].n_boisson+"' class='w3-radio w3-margin-top' type='radio'></td><td></td><td valign=bottom align=left>"+datat.boissons[i].boisson+"</td></tr>";
+                    }
+                    strtbl=strtbl+"</table>";
+                    $(formboissons).html(strtbl);
+                    
+                    var modall = document.getElementById('modal_commander');
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    ;},
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+        } 
+        function fonction_payer_modal(){
+            //choix restau dans modal+payer
+            jQuery.ajax({
+            type: "GET",
+            url: "/orangecoffee/api/v1.0/restaus",
+            data: '',
+            dataType:"json",
+            success: function(datat){
+                $(modal_commander_payer).css('display','block');
+                strtbl="<table border=0 style='width:300px'>";
+                //<input id="user_souvenir_login" class="w3-check w3-margin-top" type="checkbox" checked="checked">
+                for (i=0;i<datat.restaus.length;i++)
+                {
+                     strtbl=strtbl+"<tr><td valign=bottom align=center><input name='radiorestau2' value='"+datat.restaus[i].n_restau+"' class='w3-radio w3-margin-top' type='radio'></td><td></td><td valign=bottom align=left>"+datat.restaus[i].restau+"</td></tr>";
+                }
+                strtbl=strtbl+"</table>";
+                $(formrestaus2).html(strtbl);
+                
+                var modall = document.getElementById('modal_commander_payer');
+                window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                ;},
+            error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            }); 
+        }
+            
+        function fonction_payer_modal_2(){
+            id_restau=$('input[name=radiorestau2]:checked', '#formrestaus2').val()
+            jQuery.ajax({
+                type: "POST",
+                url: "/orangecoffee/api/v1.0/payercommandencours",
+                beforeSend: function (request)
+                            {
+                                request.setRequestHeader("X-Auth-Token-OrangeCoffee", global_user_token);
+                            },
+                data: '{"id_restau":'+id_restau+'}',
+                contentType:"application/json;charset=utf-8",
+                dataType:"json",
+                success: function(datat){
+                    var modall = document.getElementById('modal_commander_payer');                    
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    
+                    modall.style.display = "none";   
+                    ;},
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });            
+        }
+        function fonction_commander_modal_2(){
+            id_boisson=$('input[name=radioboisson]:checked', '#formboissons').val()
+            //alert(id_boisson)
+            jQuery.ajax({
+                type: "POST",
+                url: "/orangecoffee/api/v1.0/commandencours",
+                beforeSend: function (request)
+                            {
+                                request.setRequestHeader("X-Auth-Token-OrangeCoffee", global_user_token);
+                            },
+                data: '{"id_boisson":'+id_boisson+'}',
+                contentType:"application/json;charset=utf-8",
+                dataType:"json",
+                success: function(datat){
+                          
+                    var modall = document.getElementById('modal_commander');                    
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    
+                    modall.style.display = "none";                    
+                    ;},
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });            
+            
+            
+        }
+        
+        function afficher_commandencours(){
+            //rafraichir liste commandes
+            
+            commander_refresh_timer = setTimeout(afficher_commandencours, 2000);
+            
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/commandencours",
+                data: "",
+                dataType:"json",
+                success: function(data, textStatus, jqXHR){
+                    var strtbl="";
+                    var iMin,soldeMin;
+                    
+                    for (i=data.commandencours.length-1;i>=0;i--){
+                        //lequel est le + négatif?                        
+                        soldeTmp=parseInt(data.commandencours[i].solde, 10);
+                        if (i==data.commandencours.length-1){iMin=i;soldeMin=soldeTmp;}
+                        if (soldeTmp<soldeMin){soldeMin=soldeTmp;iMin=i;}
+                    }
+                    
+                    for (i=data.commandencours.length-1;i>=0;i--)
+                    {
+                        if (i==iMin){strtbl=strtbl+"<tr style='' class='w3-hover-green'><td><font color='red'><b>"+data.commandencours[i].prenom.split(' ')[0]+"</b></font></td><td><font color='red'><b>"+data.commandencours[i].boisson+"</b></font></td><td><font color='red'><b>"+data.commandencours[i].solde+"</b></font></td></tr>";}
+                        else{strtbl=strtbl+"<tr style='' class='w3-hover-green'><td>"+data.commandencours[i].prenom.split(' ')[0]+"</td><td>"+data.commandencours[i].boisson+"</td><td>"+data.commandencours[i].solde+"</td></tr>";}
+                        
+                    }
+                    $(table_commander).find("tbody").empty();
+                    $(table_commander).find("tbody").append(strtbl);         
+                    //reactivation timer
+                    //commander_refresh_timer = setTimeout(afficher_commandencours, 3000);
+                    },
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+            
+        }
+
+        function fonction_commander_restau_modal_2(){
+            id_restau=$('input[name=radiorestau]:checked', '#formrestaus').val()
+            //alert(id_restau)
+            jQuery.ajax({
+                type: "POST",
+                url: "/orangecoffee/api/v1.0/restauencours",
+                beforeSend: function (request)
+                            {
+                                request.setRequestHeader("X-Auth-Token-OrangeCoffee", global_user_token);
+                            },
+                data: '{"id_restau":'+id_restau+'}',
+                contentType:"application/json;charset=utf-8",
+                dataType:"json",
+                success: function(datat){
+                    $(commander_restau_choisi_txt).html("Le restaurant choisi aujourd'hui par "+datat.prenom+" est:<br><b>"+datat.restau+"</b><br>");
+                    var modall = document.getElementById('modal_commander_restau');                    
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    
+                    modall.style.display = "none";                    
+                    ;},
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });            
+            
+            
+        }
+        
+        function fonction_commander_onload()
+        {
+            $(modal_commander).css('display','none');//bug chrome..
+            $(modal_commander_restau).css('display','none');//bug chrome..
+            $(modal_commander_payer).css('display','none');//bug chrome..
+            
+            clearTimeout(commander_refresh_timer);//stopper timer
+            commander_refresh_timer = setTimeout(afficher_commandencours, 30);   
+            
+            //restau
+            jQuery.ajax({
+                type: "GET",
+                url: "/orangecoffee/api/v1.0/restauencours",
+                data: "",
+                dataType:"json",
+                success: function(data, textStatus, jqXHR){
+                    //restau déjà choisi?
+                    if (data.restauencours.length>0){
+                        $(commander_restau_choisi_txt).html("Le restaurant choisi aujourd'hui par "+data.restauencours[0].prenom+" est:<br><b>"+data.restauencours[0].restau+"</b><br>");
+                    }
+                    else{
+                        //demander choix restau ds modal
+                        $(modal_commander_restau_msg).html("<br><br>"+global_user_prenom+" , vous êtes le ou la 1er(e) à vous connecter, veuillez préciser à vos petits camarades le restaurant que vous avez choisi:<br><br>");
+                        
+                        jQuery.ajax({
+                            type: "GET",
+                            url: "/orangecoffee/api/v1.0/restaus",
+                            data: "",
+                            dataType:"json",
+                            success: function(datat){
+                                $(modal_commander_restau).css('display','block');
+                                strtbl="<table border=0 style='width:300px'>";
+                                //<input id="user_souvenir_login" class="w3-check w3-margin-top" type="checkbox" checked="checked">
+                                for (i=0;i<datat.restaus.length;i++)
+                                {
+                                     strtbl=strtbl+"<tr><td valign=bottom align=center><input name='radiorestau' value='"+datat.restaus[i].n_restau+"' class='w3-radio w3-margin-top' type='radio'></td><td></td><td valign=bottom align=left>"+datat.restaus[i].restau+"</td></tr>";
+                                }
+                                strtbl=strtbl+"</table>";
+                                $(formrestaus).html(strtbl);
+                                
+                                var modall = document.getElementById('modal_commander_restau');
+                                window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                                ;},
+                            error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+                        });
+                    }
+         
+                },
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });
+
+        }
+        function fonction_commander_onunload()
+        {
+            $(table_commander).find("tbody").empty();
+            clearTimeout(commander_refresh_timer);//stopper timer
+        }
+        </script>
+        
+        <span id="commander_restau_choisi_txt"></span>
+        
+        <h3>Commande en cours</h3>
+        <div id="modal_commander_restau" class="w3-modal">
+            <div class="w3-modal-content w3-animate-bottom ">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_commander_restau').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Choix restaurant</h4>
+            </header>
+            <span id="modal_commander_restau_msg"></span>
+            <div class="w3-container" id="modal_commander_restau_a">
+                <center><form id="formrestaus">
+                </form></center>
+            </div><br><br>
+            <button onclick="fonction_commander_restau_modal_2()">Choix Restaurant</button><br><br>
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+        
+        <div id="modal_commander_payer" class="w3-modal">
+            <div class="w3-modal-content w3-animate-bottom ">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_commander_payer').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Confirmer le paiement</h4>
+            </header>
+            <h5>Choisir la cafétéria de dégustation des cafés, puis confirmer le paiement</h5>
+            <div class="w3-container" id="modal_commander_payer_a">
+                <center><form id="formrestaus2">
+                </form></center>
+            </div><br><br>
+            <button onclick="fonction_payer_modal_2()">Payer</button><br><br>
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+
+        <div id="modal_commander" class="w3-modal">
+            <div class="w3-modal-content w3-animate-bottom ">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_commander').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Choix boisson</h4>
+            </header>
+            <div class="w3-container" id="modal_commander_boissons">
+                <center><form id="formboissons">
+                </form></center>
+            </div><br><br>
+            <button onclick="fonction_commander_modal_2()">Commander</button><br><br>
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+        <table id="table_commander" class="w3-table-all">
+        <tbody>
+        </tbody>
+        </table>
+        <br><br>
+        <button onclick="fonction_commander_modal()">Commander/Modifier sa boisson</button>
+        <br><br>
+        <button onclick="fonction_payer_modal()">Payer la commande</button>
+    
+    </div>
+    
+    <div id="cyr_template_login">
+        <script>
+
+        function fonction_login_onload()
+        {
+            setTimeout("$(modal_login).css('display','block');",15)
+             if(typeof(Storage) !== "undefined") {
+                //stockage login
+                $(user_login).val(localStorage.getItem("user_login"));
+            }
+            
+        }
+        function fonction_login_onunload()
+        {
+
+        }
+        function fonction_login_action()
+        {
+            if(typeof(Storage) !== "undefined") {
+                if ($('#user_souvenir_login').prop('checked')){
+                    //stockage login
+                    localStorage.setItem("user_login", $(user_login).val());
+                }
+                else{
+                    localStorage.setItem("user_login", "");
+                }
+            }
+            //connexion
+            jQuery.ajax({
+                type: "POST",
+                url: "/orangecoffee/api/v1.0/connexion",
+                data: '{"user_login":"'+$(user_login).val()+'","password":"'+$(user_password).val()+'"}',
+                contentType:"application/json;charset=utf-8",
+                dataType:"json",
+                success: function(data, textStatus, jqXHR){
+                    global_user_token=data.token;
+                    global_user_prenom=data.prenom.split(' ')[0];
+                    global_user_solde=data.solde;
+                    if(typeof(Storage) !== "undefined") {
+                        localStorage.setItem("token",global_user_token );
+                        localStorage.setItem("prenom",global_user_prenom );
+                        localStorage.setItem("solde",global_user_solde );
+                    }
+                    //modifs menus
+                    connexion();
+                    
+                    var modall = document.getElementById('modal_login');                    
+                    window.onclick = function(event) {if (event.target == modall){modall.style.display = "none";}}
+                    
+                    modall.style.display = "none";
+		    //$(login_form).submit();
+                    
+                    
+                    },
+                error: function(jqXHR,textStatus,errorThrown){gestion_erreurs(jqXHR,textStatus,errorThrown);}
+            });            
+            
+        }
+        </script>
+        
+
+
+        <div id="modal_login" class="w3-modal">
+            <div class="w3-modal-content w3-animate-bottom " style="max-width:600px">
+            <header class="w3-container w3-teal"> 
+              <span onclick="document.getElementById('modal_login').style.display='none'" 
+              class="w3-closebtn">&times;</span>
+              <h4>Se connecter</h4>
+            </header>
+            
+            <div class="w3-center" style="display:none;"><br>
+              <imgd src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+            </div>
+
+            <div class="w3-container">
+              <div class="w3-section">
+		<iframe src="javascript:''" name="dummy" style="display: none"></iframe>
+		<form method="POST" action="login" target="dummy" id="login_form">
+                <label><b>Identifiant</b></label>
+                <input id="user_login" class="w3-input w3-border w3-margin-bottom" type="text" placehoglder="Entrer votre identifiant">
+
+                <label><b>Mot de passe</b></label>
+                <input id="user_password" class="w3-input w3-border" autocomplete="on" type="password" placehgolder="Entrer votre mot de passe">
+                <br><button class="w3-btn w3-btn-block w3-green" type="submit" onclick="fonction_login_action();">Login</button>
+                <input id="user_souvenir_login" class="w3-check w3-margin-top" type="checkbox" checked="checked"> Se rappeler de moi
+                </form>
+		</div>
+            </div>
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+              <button onclick="document.getElementById('modal_login').style.display='none'" type="button" class="w3-btn w3-red">Abandonner</button>
+              <!--<span class="w3-right w3-padding w3-hide-small">Mot de passe <a href="#">oublié?</a></span>-->
+            </div>            
+            
+            <footer class="w3-container w3-teal">
+              <p></p>
+            </footer>
+            </div>
+        </div>
+
+    
+
+        <br><br><br><br>
+    </div>
+    
+</div>
+</body>
+</html>
